@@ -127,3 +127,22 @@ DELETE FROM mascotas WHERE id = 2
 SELECT m.nombre AS mascota, m.especie, CONCAT(d.nombre, ' ', d.apellido) AS dueno
 FROM mascotas m
 INNER JOIN duenos d ON m.id_dueno = d.id;
+
+
+--Ejercicio 10 – JOIN múltiple con historial
+--Consulta que muestre todas las entradas del historial clínico con:
+--● Nombre y especie de la mascota
+--● Nombre completo del dueño
+--● Nombre completo del veterinario
+--● Fecha de registro
+--● Descripción
+--Ordenados por fecha de registro descendente (DESC).
+
+
+SELECT m.nombre AS mascota, m.especie, CONCAT(d.nombre, ' ', d.apellido) AS dueno,
+CONCAT(v.nombre, ' ', v.apellido) AS veterinario, h.fecha_registro, h.descripcion
+FROM historial_clinico h
+JOIN mascotas m ON h.id_mascota = m.id
+JOIN duenos d ON m.id_dueno = d.id
+JOIN veterinarios v ON h.id_veterinario = v.id
+ORDER BY h.fecha_registro DESC;
