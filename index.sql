@@ -122,3 +122,8 @@ DELETE FROM mascotas WHERE id = 2
 --● Nombre de la mascota
 --● Especie
 --● Nombre completo del dueño (nombre + apellido)
+
+
+SELECT m.nombre AS mascota, m.especie, CONCAT(d.nombre, ' ', d.apellido) AS dueno
+FROM mascotas m
+INNER JOIN duenos d ON m.id_dueno = d.id;
