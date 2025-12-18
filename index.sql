@@ -45,7 +45,7 @@ CREATE TABLE veterinarios(
 CREATE TABLE historial_clinico(
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_mascota INT,
-    FOREIGN KEY (id_mascota) REFERENCES mascotas(id),
+    FOREIGN KEY (id_mascota) REFERENCES mascotas(id) ON DELETE CASCADE,
     id_veterinario INT,
     FOREIGN KEY (id_veterinario) REFERENCES veterinarios(id),
     fecha_registro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -107,3 +107,18 @@ WHERE id = 1;
 UPDATE historial_clinico
 SET descripcion = 'Trasplante de Corazon'
 WHERE id = 3;
+
+
+--Ejercicio 8 – Eliminar registros
+--1. Eliminar una mascota (por ID o nombre).
+--2. Verificar que se eliminen automáticamente los registros del historial clínico asociados
+--(ON DELETE CASCADE).
+
+DELETE FROM mascotas WHERE id = 2
+
+
+--Ejercicio 9 – JOIN simple
+--Consulta que muestre:
+--● Nombre de la mascota
+--● Especie
+--● Nombre completo del dueño (nombre + apellido)
