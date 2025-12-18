@@ -3,7 +3,6 @@
 
 CREATE DATABASE veterinaria_patitas_felices;
 
-
 --Ejercicio 2 – Crear tabla duenos
 --Crear la tabla duenos con las siguientes columnas:
 
@@ -60,11 +59,13 @@ CREATE TABLE historial_clinico(
 --● 2 veterinarios con especialidades distintas
 --● 3 registros de historial clínico
 
+
 INSERT INTO duenos (nombre, apellido, telefono, direccion)
 VALUES
     ('Franco', 'Dominguez', '1166887749', 'Calle Falsa 666'),
     ('Juan', 'Rodriguez', '1180924030', 'Av corrientes 2000'),
     ('Alberto', 'Palacios', '1168552170', 'Jujuy 1250');
+
 
 INSERT INTO mascotas (nombre, especie, fecha_nacimiento, id_dueno)
 VALUES
@@ -72,10 +73,12 @@ VALUES
     ('Pinky Winky', 'Tortuga', '2000-07-10', '2'),
     ('Jesus', 'Gato', '2023-01-12', '3');
 
+
 INSERT INTO veterinarios (nombre, apellido, matricula, especialidad)
 VALUES
     ('Victoria', 'Gomez', '8092', 'Clinica General'),
     ('Tony', 'Stark', '7777', 'Cirugia');
+
 
 INSERT INTO historial_clinico (id_mascota, id_veterinario, descripcion)
 VALUES
@@ -83,8 +86,24 @@ VALUES
     ('2', '1', 'Control General'),
     ('3', '2', 'Operacion Corazon Abierto');
 
+
 --Ejercicio 7 – Actualizar registros
 --Realizar las siguientes actualizaciones:
 --1. Cambiar la dirección de un dueño (por ID o nombre).
 --2. Actualizar la especialidad de un veterinario (por ID o matrícula).
 --3. Editar la descripción de un historial clínico (por ID).
+
+
+UPDATE duenos
+SET direccion = 'Colombres 150'
+WHERE id = 3;
+
+
+UPDATE veterinarios
+SET especialidad = 'Cardiologia'
+WHERE id = 1;
+
+
+UPDATE historial_clinico
+SET descripcion = 'Trasplante de Corazon'
+WHERE id = 3;
