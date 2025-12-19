@@ -1,10 +1,10 @@
---Ejercicio 1 – Crear Base de Datos
---Crear una base de datos llamada veterinaria_patitas_felices.
+-- Ejercicio 1 – Crear Base de Datos
+-- Crear una base de datos llamada veterinaria_patitas_felices.
 
 CREATE DATABASE veterinaria_patitas_felices;
-
---Ejercicio 2 – Crear tabla duenos
---Crear la tabla duenos con las siguientes columnas:
+USE veterinaria_patitas_felices;
+-- Ejercicio 2 – Crear tabla duenos
+-- Crear la tabla duenos con las siguientes columnas:
 
 
 CREATE TABLE duenos (
@@ -15,8 +15,8 @@ CREATE TABLE duenos (
     direccion VARCHAR(100)
 );
 
---Ejercicio 3 – Crear tabla mascotas
---Crear la tabla mascotas con las siguientes columnas:
+-- Ejercicio 3 – Crear tabla mascotas
+-- Crear la tabla mascotas con las siguientes columnas:
 
 CREATE TABLE mascotas (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -28,8 +28,8 @@ CREATE TABLE mascotas (
 );
 
 
---Ejercicio 4 – Crear tabla veterinarios
---Crear la tabla veterinarios con las siguientes columnas:
+-- Ejercicio 4 – Crear tabla veterinarios
+-- Crear la tabla veterinarios con las siguientes columnas:
 
 CREATE TABLE veterinarios(
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -39,8 +39,8 @@ CREATE TABLE veterinarios(
     especialidad VARCHAR(50) NOT NULL
 );
 
---Ejercicio 5 – Crear tabla historial_clinico
---Crear la tabla historial_clinico con las siguientes columnas:
+-- Ejercicio 5 – Crear tabla historial_clinico
+-- Crear la tabla historial_clinico con las siguientes columnas:
 
 CREATE TABLE historial_clinico(
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -52,12 +52,12 @@ CREATE TABLE historial_clinico(
     descripcion VARCHAR(250) NOT NULL
 );
 
---Ejercicio 6 – Insertar registros
---Insertar:
---● 3 dueños con información completa
---● 3 mascotas, cada una asociada a un dueño
---● 2 veterinarios con especialidades distintas
---● 3 registros de historial clínico
+-- Ejercicio 6 – Insertar registros
+-- Insertar:
+-- ● 3 dueños con información completa
+-- ● 3 mascotas, cada una asociada a un dueño
+-- ● 2 veterinarios con especialidades distintas
+-- ● 3 registros de historial clínico
 
 
 INSERT INTO duenos (nombre, apellido, telefono, direccion)
@@ -87,11 +87,11 @@ VALUES
     ('3', '2', 'Operacion Corazon Abierto');
 
 
---Ejercicio 7 – Actualizar registros
---Realizar las siguientes actualizaciones:
---1. Cambiar la dirección de un dueño (por ID o nombre).
---2. Actualizar la especialidad de un veterinario (por ID o matrícula).
---3. Editar la descripción de un historial clínico (por ID).
+-- Ejercicio 7 – Actualizar registros
+-- Realizar las siguientes actualizaciones:
+-- 1. Cambiar la dirección de un dueño (por ID o nombre).
+-- 2. Actualizar la especialidad de un veterinario (por ID o matrícula).
+-- 3. Editar la descripción de un historial clínico (por ID).
 
 
 UPDATE duenos
@@ -109,19 +109,19 @@ SET descripcion = 'Trasplante de Corazon'
 WHERE id = 3;
 
 
---Ejercicio 8 – Eliminar registros
---1. Eliminar una mascota (por ID o nombre).
---2. Verificar que se eliminen automáticamente los registros del historial clínico asociados
---(ON DELETE CASCADE).
+-- Ejercicio 8 – Eliminar registros
+-- 1. Eliminar una mascota (por ID o nombre).
+-- 2. Verificar que se eliminen automáticamente los registros del historial clínico asociados
+-- (ON DELETE CASCADE).
 
-DELETE FROM mascotas WHERE id = 2
+DELETE FROM mascotas WHERE id = 2;
 
 
---Ejercicio 9 – JOIN simple
---Consulta que muestre:
---● Nombre de la mascota
---● Especie
---● Nombre completo del dueño (nombre + apellido)
+-- Ejercicio 9 – JOIN simple
+-- Consulta que muestre:
+-- ● Nombre de la mascota
+-- ● Especie
+-- ● Nombre completo del dueño (nombre + apellido)
 
 
 SELECT m.nombre AS mascota, m.especie, CONCAT(d.nombre, ' ', d.apellido) AS dueno
@@ -129,14 +129,14 @@ FROM mascotas m
 INNER JOIN duenos d ON m.id_dueno = d.id;
 
 
---Ejercicio 10 – JOIN múltiple con historial
---Consulta que muestre todas las entradas del historial clínico con:
---● Nombre y especie de la mascota
---● Nombre completo del dueño
---● Nombre completo del veterinario
---● Fecha de registro
---● Descripción
---Ordenados por fecha de registro descendente (DESC).
+-- Ejercicio 10 – JOIN múltiple con historial
+-- Consulta que muestre todas las entradas del historial clínico con:
+-- ● Nombre y especie de la mascota
+-- ● Nombre completo del dueño
+-- ● Nombre completo del veterinario
+-- ● Fecha de registro
+-- ● Descripción
+-- Ordenados por fecha de registro descendente (DESC).
 
 
 SELECT m.nombre AS mascota, m.especie, CONCAT(d.nombre, ' ', d.apellido) AS dueno,
